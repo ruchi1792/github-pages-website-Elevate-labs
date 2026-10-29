@@ -4,48 +4,647 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My First Website</title>
+
+    <title>Ruchita Deshmukh | Cloud & DevOps Portfolio</title>
+
+    <meta name="description"
+          content="Ruchita Deshmukh's portfolio showcasing AWS Cloud, DevOps, CI/CD, Docker, and infrastructure automation projects.">
 
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f4f8;
-            text-align: center;
-            padding: 50px 20px;
-        }
-
-        .container {
-            background-color: white;
-            max-width: 600px;
-            margin: auto;
-            padding: 30px;
-            border-radius: 12px;
-        }
-
-        h1 {
-            color: #2563eb;
-        }
-
-        p {
-            color: #444;
-            line-height: 1.6;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0b1120;
+            color: #e5e7eb;
+            line-height: 1.7;
         }
 
         a {
-            color: #2563eb;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        /* Navigation */
+        header {
+            background: #111827;
+            border-bottom: 1px solid #273449;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        nav {
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            color: #60a5fa;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 22px;
+            font-size: 14px;
+        }
+
+        .nav-links a:hover {
+            color: #60a5fa;
+        }
+
+        /* Hero section */
+        .hero {
+            padding: 100px 0 90px;
+            background:
+                radial-gradient(ellipse at top right,
+                #1e3a5f 0%, #0b1120 55%);
+        }
+
+        .tag {
+            display: inline-block;
+            color: #93c5fd;
+            border: 1px solid #315782;
+            background: #14243a;
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 13px;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 {
+            font-size: clamp(34px, 6vw, 58px);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #60a5fa;
+        }
+
+        .hero p {
+            max-width: 680px;
+            color: #b7c3d4;
+            font-size: 17px;
+            margin-bottom: 28px;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 11px 20px;
+            border-radius: 7px;
+            font-weight: bold;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 1px solid #64748b;
+            color: #e5e7eb;
+        }
+
+        .btn-outline:hover {
+            border-color: #60a5fa;
+            color: #60a5fa;
+        }
+
+        /* Common sections */
+        section {
+            padding: 75px 0;
+            scroll-margin-top: 70px;
+        }
+
+        .section-title {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .section-intro {
+            color: #9ca3af;
+            margin-bottom: 32px;
+        }
+
+        .accent {
+            color: #60a5fa;
+        }
+
+        .about-text {
+            color: #cbd5e1;
+            max-width: 850px;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .card {
+            background: #111827;
+            border: 1px solid #273449;
+            border-radius: 12px;
+            padding: 23px;
+        }
+
+        .card h3 {
+            color: #93c5fd;
+            margin-bottom: 12px;
+            font-size: 18px;
+        }
+
+        .card p {
+            color: #b7c3d4;
+            font-size: 14px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 14px;
+        }
+
+        .tags span {
+            background: #1e293b;
+            color: #cbd5e1;
+            border: 1px solid #334155;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .project-card {
+            background: #111827;
+            border: 1px solid #273449;
+            border-radius: 12px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card h3 {
+            font-size: 19px;
+            margin-bottom: 10px;
+        }
+
+        .project-card p {
+            color: #b7c3d4;
+            font-size: 14px;
+        }
+
+        .project-card .tags {
+            margin-bottom: 22px;
+        }
+
+        .project-link {
+            color: #60a5fa;
+            font-size: 14px;
+            font-weight: bold;
+            margin-top: auto;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Certification */
+        .certification {
+            border-left: 4px solid #3b82f6;
+        }
+
+        /* Contact */
+        .contact-box {
+            background: #111827;
+            border: 1px solid #273449;
+            border-radius: 12px;
+            padding: 32px;
+        }
+
+        .contact-box p {
+            color: #b7c3d4;
+            margin: 12px 0 22px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px 0;
+            border-top: 1px solid #273449;
+            color: #9ca3af;
+            font-size: 13px;
+        }
+
+        /* Mobile responsive design */
+        @media (max-width: 750px) {
+            nav {
+                padding: 15px 0;
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .hero {
+                padding: 70px 0;
+            }
+
+            .skills-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 55px 0;
+            }
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <h1>Welcome to My Website!</h1>
 
-        <p>Hello! I am learning HTML, CSS, Git, and GitHub Pages.</p>
+    <!-- Navigation -->
+    <header>
+        <nav class="container">
+            <a class="logo" href="#home">Ruchita.dev</a>
 
-        <p>This is my first static website deployment project.</p>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#certifications">Certifications</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
 
-        <a href="https://github.com/">Visit GitHub</a>
-    </div>
+    <main>
+
+        <!-- Hero -->
+        <section class="hero" id="home">
+            <div class="container">
+                <span class="tag">Cloud Computing | DevOps</span>
+
+                <h1>
+                    Hi, I'm Ruchita<br>
+                    <span>Cloud & DevOps Enthusiast</span>
+                </h1>
+
+                <p>
+                    I am passionate about AWS Cloud, infrastructure
+                    automation, containerization, and CI/CD pipelines.
+                    I enjoy building projects that help me learn cloud
+                    deployment and DevOps practices.
+                </p>
+
+                <div class="buttons">
+                    <a class="btn btn-primary"
+                       href="#projects">Explore My Projects</a>
+
+                    <a class="btn btn-outline"
+                       href="https://github.com/ruchi1792"
+                       target="_blank"
+                       rel="noopener noreferrer">GitHub Profile</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section id="about">
+            <div class="container">
+                <h2 class="section-title">
+                    About <span class="accent">Me</span>
+                </h2>
+
+                <p class="section-intro">
+                    A little about my learning journey
+                </p>
+
+                <p class="about-text">
+                    I am Ruchita Deshmukh, an IT graduate building
+                    my skills in Cloud Computing and DevOps. I have
+                    completed AWS Cloud training and earned the
+                    AWS Certified Cloud Practitioner certification.
+
+                    <br><br>
+
+                    Through hands-on projects and internship tasks,
+                    I have practised deploying applications, working
+                    with AWS services, managing source code with Git,
+                    and creating CI/CD pipelines using tools such as
+                    GitHub Actions, Jenkins, Docker, and Terraform.
+
+                    <br><br>
+
+                    I am looking forward to growing my practical
+                    experience and contributing to cloud and DevOps
+                    engineering projects.
+                </p>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills" style="background:#0f172a;">
+            <div class="container">
+                <h2 class="section-title">
+                    Technical <span class="accent">Skills</span>
+                </h2>
+
+                <p class="section-intro">
+                    Technologies I have studied and practised
+                </p>
+
+                <div class="skills-grid">
+
+                    <article class="card">
+                        <h3>AWS Cloud</h3>
+                        <p>
+                            Cloud infrastructure, storage, networking,
+                            serverless services, and monitoring.
+                        </p>
+                        <div class="tags">
+                            <span>EC2</span>
+                            <span>S3</span>
+                            <span>IAM</span>
+                            <span>VPC</span>
+                            <span>Lambda</span>
+                            <span>DynamoDB</span>
+                            <span>CloudWatch</span>
+                            <span>API Gateway</span>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <h3>DevOps & Automation</h3>
+                        <p>
+                            Version control, CI/CD, containers,
+                            and infrastructure as code.
+                        </p>
+                        <div class="tags">
+                            <span>Git</span>
+                            <span>GitHub</span>
+                            <span>GitHub Actions</span>
+                            <span>Jenkins</span>
+                            <span>Docker</span>
+                            <span>Kubernetes</span>
+                            <span>Terraform</span>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <h3>Systems & Development</h3>
+                        <p>
+                            Command-line operations, scripting,
+                            web technologies, and monitoring tools.
+                        </p>
+                        <div class="tags">
+                            <span>Linux</span>
+                            <span>Bash</span>
+                            <span>Python</span>
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                            <span>Prometheus</span>
+                            <span>Grafana</span>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects">
+            <div class="container">
+                <h2 class="section-title">
+                    My <span class="accent">Projects</span>
+                </h2>
+
+                <p class="section-intro">
+                    Selected hands-on cloud and DevOps projects
+                </p>
+
+                <div class="projects-grid">
+
+                    <article class="project-card">
+                        <h3>Data Redundancy Removal System</h3>
+                        <p>
+                            Built an AWS serverless workflow to check
+                            employee records for duplicates using
+                            Lambda and DynamoDB, with S3 backups
+                            and SNS email notifications.
+                        </p>
+                        <div class="tags">
+                            <span>AWS Lambda</span>
+                            <span>DynamoDB</span>
+                            <span>S3</span>
+                            <span>SNS</span>
+                            <span>API Gateway</span>
+                        </div>
+                        <a class="project-link"
+                           href="https://github.com/ruchi1792/Data-Redundancy-Removal-System"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            View Source Code →
+                        </a>
+                    </article>
+
+                    <article class="project-card">
+                        <h3>Node.js GitHub Actions CI/CD</h3>
+                        <p>
+                            Created a CI/CD workflow to run application
+                            tests, build a Docker image, and automate
+                            image publishing using GitHub Actions.
+                        </p>
+                        <div class="tags">
+                            <span>Node.js</span>
+                            <span>GitHub Actions</span>
+                            <span>Jest</span>
+                            <span>Docker</span>
+                        </div>
+                        <a class="project-link"
+                           href="https://github.com/ruchi1792/nodejs-demo-app-Elevate-labs"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            View Source Code →
+                        </a>
+                    </article>
+
+                    <article class="project-card">
+                        <h3>Jenkins CI/CD with Docker</h3>
+                        <p>
+                            Practised automated build and deployment
+                            steps using a Jenkins pipeline and Docker
+                            containers in a Linux environment.
+                        </p>
+                        <div class="tags">
+                            <span>Jenkins</span>
+                            <span>Docker</span>
+                            <span>Linux</span>
+                            <span>Git</span>
+                        </div>
+                        <a class="project-link"
+                           href="https://github.com/ruchi1792/jenkins-docker-cicd-elevate-labs"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            View Source Code →
+                        </a>
+                    </article>
+
+                    <article class="project-card">
+                        <h3>Terraform Docker Deployment</h3>
+                        <p>
+                            Used Terraform to define and manage Docker
+                            resources, deploy an Nginx container,
+                            inspect infrastructure state, and practise
+                            resource cleanup.
+                        </p>
+                        <div class="tags">
+                            <span>Terraform</span>
+                            <span>Docker</span>
+                            <span>Nginx</span>
+                            <span>IaC</span>
+                        </div>
+                        <a class="project-link"
+                           href="https://github.com/ruchi1792"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            Explore GitHub Projects →
+                        </a>
+                    </article>
+
+                    <article class="project-card">
+                        <h3>Static Website Deployment</h3>
+                        <p>
+                            Created a responsive portfolio website
+                            using HTML and CSS, stored the source code
+                            in GitHub, and published it using
+                            GitHub Pages.
+                        </p>
+                        <div class="tags">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>Git</span>
+                            <span>GitHub Pages</span>
+                        </div>
+                        <a class="project-link"
+                           href="https://github.com/ruchi1792/github-pages-website-Elevate-labs"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            View Source Code →
+                        </a>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications -->
+        <section id="certifications" style="background:#0f172a;">
+            <div class="container">
+                <h2 class="section-title">
+                    Training & <span class="accent">Certifications</span>
+                </h2>
+
+                <p class="section-intro">
+                    Cloud learning and professional development
+                </p>
+
+                <article class="card certification">
+                    <h3>AWS Certified Cloud Practitioner</h3>
+                    <p>
+                        Foundational knowledge of AWS Cloud concepts,
+                        core services, security, pricing, and cloud
+                        architecture.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact">
+            <div class="container">
+                <div class="contact-box">
+                    <h2 class="section-title">
+                        Let's Connect
+                    </h2>
+
+                    <p>
+                        Explore my repositories and follow my journey
+                        in Cloud Computing and DevOps.
+                    </p>
+
+                    <div class="buttons">
+                        <a class="btn btn-primary"
+                           href="https://github.com/ruchi1792"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            Visit My GitHub
+                        </a>
+
+                        <a class="btn btn-outline"
+                           href="https://www.linkedin.com/"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            LinkedIn
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>
+                © 2026 Ruchita Deshmukh |
+                Cloud & DevOps Portfolio
+            </p>
+        </div>
+    </footer>
+
 </body>
 </html>
